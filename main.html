@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            margin-bottom: 20px;
+            margin-left: 20px;
+            margin-right: 40px;
+            margin-top: 20px;
+        }
+
+        label {
+            display: inline-block;
+            width: 120px;
+        }
+
+        fieldset {
+            background: #65d6f3;
+        }
+
+        legend {
+            padding: 20px 0;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<head>
+    <h1>Пожалуйста, введите данные для предсказания стоимости квартиры:</h1>
+</head>
+
+
+<body>
+    <form action="{{url_for('main')}}" method="POST">
+        <fieldset>
+            <small>регион Москвы</small>
+            <input type="text" name="region_of_moscow">
+            <br>
+            <br>
+            <small>количество минут до метро пешком</small>
+            <input type="text" name="min_to_metro">
+            <br>
+            <br>
+            <small>общая площадь квартиры (кв.м)</small>
+            <input type="text" name="total_area">
+            <br>
+            <br>
+            <small>этаж, на котором будет располагаться квартира</small>
+            <input type="text" name="floor">
+            <br>
+            <br>
+            <small>количество этажей дома</small>
+            <input type="text" name="number_of_floors">
+            <br>
+            <br>
+            <small>год постройки (сдачи квартиры)</small>
+            <input type="text" name="construction_year">
+            <br>
+            <br>
+            <small>новостройка(1) / вторичка (0)</small>
+            <input type="text" name="is_new">
+            <br>
+            <br>
+            <small>апартаменты(1) / не апартаменты (0)</small>
+            <input type="text" name="is_apartments">
+            <br>
+            <br>
+            <small>высота потолков (стандартно-2,5 м)</small>
+            <input type="text" name="ceiling_height">
+            <br>
+            <br>
+            <small>количество комнат</small>
+            <input type="text" name="number_of_rooms">
+            <br>
+            <br>
+        </fieldset>
+        <button type="submit">ПОЛУЧИТЬ ПРОГНОЗ ПО СТОИМОСТИ КВАРТИРЫ</button>
+    </form>
+
+    <div>
+        {%if result %}
+        <p>Стоимость квартиры по заданным параметрам составит:</p>
+        <p>{{result}}</p>
+        {% endif %}
+    </div>
+
+</body>
+
+</html>
